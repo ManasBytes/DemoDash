@@ -6,7 +6,7 @@ interface CourseCardProps {
 
 export function CourseCard({ title, description, progress }: CourseCardProps) {
   return (
-    <div className="bg-slate-50 p-6 mb-6 rounded-md">
+    <div className=" rounded-2xl border-gray-200 bg-white px-5 py-7 dark:border-gray-800 dark:bg-white/[0.03] xl:px-10 xl:py-12">
       <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
         <div className="space-y-2">
           <h2 className="text-2xl font-semibold text-purple-500">{title}</h2>

@@ -19,11 +19,14 @@ export default function AccountSummary() {
           <RecentOrders />
         </div>
         <div className="col-span-12 xl:col-span-5">
-          <ComponentCard title = "Insights">
+          <div className="min-h-auto rounded-2xl border border-gray-200 bg-white px-5 py-7 dark:border-gray-800 dark:bg-white/[0.03] xl:px-10 xl:py-12">
+          <h3 className="mb-4 font-semibold text-gray-800 text-theme-xl dark:text-white/90 sm:text-2xl">
+            Insights
+          </h3>
                 <h1>Ai Based Insights</h1>
                 <h1>Ai Based Insights</h1>
                 <h1>Ai Based Insights</h1>
-          </ComponentCard>
+          </div>
           <ExpenseChartData/>
         </div>
 

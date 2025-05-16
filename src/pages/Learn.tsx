@@ -1,11 +1,11 @@
-import { CourseHeader } from "../components/ui/learn/CourseHeader"
-import { CourseContent } from "../components/ui/learn/CourseContent"
+import { CourseHeader } from "../components/learn/CourseHeader"
+import { CourseContent } from "../components/learn/CourseContent"
 
 function Learn() {
   return (
-    <div className="flex flex-col min-h-screen border rounded-lg overflow-hidden">
+    <div className="rounded-2xl border border-gray-200 bg-white px-5 py-7 dark:border-gray-800 dark:bg-white/[0.03] xl:px-10 xl:py-12">
       <CourseHeader />
-      <div className="flex flex-col md:flex-row flex-1">
+      <div className="rounded-2xl border border-gray-200 bg-white px-5 py-7 dark:border-gray-900 dark:bg-white/[0.03] xl:px-10 xl:py-12">
         <CourseContent />
       </div>
     </div>

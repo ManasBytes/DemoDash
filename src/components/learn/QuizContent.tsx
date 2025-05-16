@@ -61,11 +61,10 @@ export function QuizContent({ title, duration, questions, onComplete, onBack }: 
   const progress = ((currentQuestion + 1) / questions.length) * 100
 
   return (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full ">
       <div className="border-b p-4">
         <div className="flex items-center justify-between">
           <h2 className="text-xl font-semibold">{title}</h2>
-          <span className="text-sm text-gray-500">{duration}</span>
         </div>
         {!showResults && (
           <div className="mt-4 space-y-1">

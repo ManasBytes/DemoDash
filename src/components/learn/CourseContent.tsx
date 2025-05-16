@@ -30,17 +30,16 @@ interface LessonProps {
 function Lesson({ lesson, isActive, isCompleted, onClick }: LessonProps) {
   return (
     <div
-      className={`flex items-center py-2 px-4 hover:bg-slate-50 cursor-pointer ${isActive ? "bg-slate-100" : ""}`}
+      className={`flex items-center py-2 px-4  dark:text-white/90 hover:bg-blue-100 }`}
       onClick={onClick}
     >
       <div className="mr-3 text-gray-500">
         {lesson.isQuiz ? <List size={16} /> : <FileText size={16} />}
       </div>
       <div className="flex-1">
-        <p className={`text-sm ${isCompleted ? "line-through text-gray-400" : ""}`}>
+        <p className={`text-sm ${isCompleted ? "line-through text-gray-400" : ""} my-2`}>
           {lesson.title}
         </p>
-        <p className="text-xs text-gray-500">{lesson.duration}</p>
       </div>
       {isCompleted && <div className="h-2 w-2 rounded-full bg-green-500 mr-2" />}
     </div>
@@ -65,12 +64,12 @@ function AccordionItem({
   onNextModuleClick,
 }: AccordionItemProps) {
   return (
-    <div className="border-b">
+    <div className="rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] p-2 m-2 ">
       <button
-        className="flex items-center justify-between w-full px-4 py-3 hover:bg-slate-50 text-left"
+        className="flex items-center justify-between w-full px-4 py-3 hover:bg-slate-50 text-left  dark:text-white/90"
         onClick={onToggle}
       >
-        <span className="font-medium">{title}</span>
+        <span className="">{title}</span>
         {isOpen ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
       </button>
       {isOpen && (
@@ -231,11 +230,11 @@ In conclusion, SIPs offer a structured and disciplined way to invest in mutual f
   }
 
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex h-screen overflow-hidden  dark:text-white/90">
       {/* Sidebar */}
-      <aside className="w-72 border-r overflow-y-auto">
-        <div className="p-4 border-b">
-          <h1 className="text-xl font-bold">Course Modules</h1>
+      <aside className="w-72 rounded-2xl border border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03] overflow-y-auto ">
+        <div className="p-4 border-b border-gray-200 bg-white dark:border-gray-800 dark:bg-white/[0.03]">
+          <h1 className="text-xl ">Course Modules</h1>
         </div>
         {modules.map((module, index) => {
           const isCompleted = module.lessons.every((l) =>
@@ -287,8 +286,7 @@ In conclusion, SIPs offer a structured and disciplined way to invest in mutual f
           ) : (
             <div>
               <h2 className="text-2xl font-semibold mb-2">{activeLesson.title}</h2>
-              <p className="text-gray-500 mb-4">{activeLesson.duration}</p>
-              <p className="text-base text-gray-700 whitespace-pre-line">
+              <p className="text-base text-gray-700 whitespace-pre-line  dark:text-white/90">
                 {activeLesson.content}
               </p>
               <div className="mt-6 flex gap-3">

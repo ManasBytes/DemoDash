@@ -12,7 +12,7 @@ export default function Invest() {
       <div className="min-h-[40%] rounded-2xl border border-gray-200 bg-white px-5 py-7 dark:border-gray-800 dark:bg-white/[0.03] xl:px-10 xl:py-12">
         <div className="space-y-6">
           <div className="flex justify-between items-center">
-            <h1 className="text-2xl">Daily Investment Plan</h1>
+            <h1 className="text-2xl  dark:text-white/90">Daily Investment Plan</h1>
             <Button size="md" variant="primary">
               <h1 className="text-xl">+ Set New Target</h1>
             </Button>
@@ -45,7 +45,7 @@ export default function Invest() {
       <div className="min-h-auto rounded-2xl border border-gray-200 bg-white px-5 py-7 dark:border-gray-800 dark:bg-white/[0.03] xl:px-10 xl:py-12 mt-12">
         <div className="space-y-6">
           <div className="flex justify-between items-center">
-            <h1 className="text-2xl">Goals</h1>
+            <h1 className="text-2xl  dark:text-white/90">Goals</h1>
             <Button size="md" variant="primary">
               <h1 className="text-xl">+ Add Goals</h1>
             </Button>

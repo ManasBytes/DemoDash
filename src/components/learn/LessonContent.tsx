@@ -35,7 +35,6 @@ export function LessonContent({
       <header className="border-b p-4">
         <div className="flex justify-between items-center">
           <h2 className="text-xl font-semibold">{title}</h2>
-          <span className="text-sm text-gray-500">{duration}</span>
         </div>
 
         <div className="flex justify-between items-center mt-4 text-sm text-gray-500">
