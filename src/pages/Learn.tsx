@@ -1,13 +1,15 @@
-import PageBreadcrumb from "../components/common/PageBreadCrumb";
-import PageMeta from "../components/common/PageMeta";
+import { CourseHeader } from "../components/ui/learn/CourseHeader"
+import { CourseContent } from "../components/ui/learn/CourseContent"
 
-export default function Learn() {
+function Learn() {
   return (
-    <div>
-      <PageBreadcrumb pageTitle="Learn" />
-      <div className="min-h-screen rounded-2xl border border-gray-200 bg-white px-5 py-7 dark:border-gray-800 dark:bg-white/[0.03] xl:px-10 xl:py-12">
-        
+    <div className="flex flex-col min-h-screen border rounded-lg overflow-hidden">
+      <CourseHeader />
+      <div className="flex flex-col md:flex-row flex-1">
+        <CourseContent />
       </div>
     </div>
-  );
+  )
 }
+
+export default Learn;
