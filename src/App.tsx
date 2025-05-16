@@ -32,7 +32,6 @@ export default function App() {
             <Route path="/account" element={<AccountSummary />} />
             <Route path="/learn" element={<Learn />} />
             <Route path="/invest" element={<Invest />} />
-            <Route path="/goals" element={<Goals />} />
             <Route path="/rewards" element={<Rewards />} />
             <Route path="/support" element={<Support />} />
             <Route path="/expenses" element={<Expenses />} />

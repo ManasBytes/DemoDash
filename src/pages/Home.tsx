@@ -1,8 +1,8 @@
-import ExpenseMetrics from "../components/dashboardElements/ExpenseMetrics";
-import MonthlySalesChart from "../components/dashboardElements/DailyExpenseChart";
-import StatisticsChart from "../components/dashboardElements/StatisticsChart";
-import MonthlyTarget from "../components/dashboardElements/MonthlyTarget";
-import RecentOrders from "../components/dashboardElements/RecentTransactions";
+import ExpenseMetrics from "../components/DashboardElements/ExpenseMetrics";
+import MonthlySalesChart from "../components/DashboardElements/DailyExpenseChart";
+import StatisticsChart from "../components/DashboardElements/StatisticsChart";
+import MonthlyTarget from "../components/DashboardElements/MonthlyTarget";
+import RecentOrders from "../components/DashboardElements/RecentTransactions";
 
 export default function Home() {
   return (

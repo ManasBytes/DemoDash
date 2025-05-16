@@ -40,10 +40,6 @@ const navItems: NavItem[] = [
     path:"/invest"
   },{
     icon: <GridIcon />,
-    name: "Goals",
-    path:"/goals"
-  },{
-    icon: <GridIcon />,
     name: "Learn",
     path:"/learn"
   },
