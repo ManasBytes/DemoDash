@@ -1,19 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router";
-
-// Assume these icons are imported from an icon library
+import { BookOpen, ChartNoAxesCombined, Gift, Headset, LayoutDashboard, User, Wallet } from "lucide-react";
 import {
-  BoxCubeIcon,
-  CalenderIcon,
   ChevronDownIcon,
-  GridIcon,
   HorizontaLDots,
-  ListIcon,
-  PageIcon,
-  PieChartIcon,
-  PlugInIcon,
-  TableIcon,
-  UserCircleIcon,
 } from "../icons";
 import { useSidebar } from "../context/SidebarContext";
 
@@ -26,25 +16,25 @@ type NavItem = {
 
 const navItems: NavItem[] = [
   {
-    icon: <GridIcon />,
+    icon: <LayoutDashboard color="#707070" />,
     name: "Dashboard",
     path:"/"
   },{
-    icon: <GridIcon />,
+    icon: <Wallet color="#707070" />,
     name: "Account",
     path:"/account"
     
   },{
-    icon: <GridIcon />,
+    icon: <ChartNoAxesCombined color="#707070" />,
     name: "Invest",
     path:"/invest"
   },{
-    icon: <GridIcon />,
+    icon: <BookOpen color="#707070" />,
     name: "Learn",
     path:"/learn"
   },
   {
-    icon: <GridIcon />,
+    icon: <Gift color="#707070" />,
     name: "Rewards",
     path:"/rewards"
   },
@@ -52,12 +42,12 @@ const navItems: NavItem[] = [
 
 const othersItems: NavItem[] = [
   {
-    icon: <UserCircleIcon />,
+    icon: <User color="#707070" />,
     name: "Profile",
     path:"/profile"
   },
   {
-    icon: <UserCircleIcon />,
+    icon: <Headset color="#707070" />,
     name: "Support",
     path:"/support"
   }
