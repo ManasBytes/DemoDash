@@ -1,5 +1,6 @@
-import { useState } from "react";
-import { Link } from "react-router";
+import { useState, ChangeEvent, FormEvent } from "react";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom"; // Added useNavigate for navigation
 import { ChevronLeftIcon, EyeCloseIcon, EyeIcon } from "../../icons";
 import Label from "../form/Label";
 import Input from "../form/input/InputField";
@@ -7,8 +8,56 @@ import Checkbox from "../form/input/Checkbox";
 import Button from "../ui/button/Button";
 
 export default function SignInForm() {
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
   const [showPassword, setShowPassword] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+  const navigate = useNavigate(); // Hook for navigation
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError("");
+    setSuccess("");
+
+    if (!formData.email || !formData.password) {
+      setError("Please fill all required fields.");
+      return;
+    }
+
+    try {
+      const response = await axios.post("http://localhost:3001/auth/login", {
+        email: formData.email,
+        password: formData.password,
+      }, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      setSuccess(response.data.message || "Login successful!");
+      setFormData({ email: "", password: "" });
+      setIsChecked(false);
+
+      // Navigate to "/" after successful login
+      setTimeout(() => navigate("/"), 1000);
+    } catch (err: any) {
+      if (axios.isAxiosError(err)) {
+        setError(err.response?.data?.message || err.message || "Login failed");
+      } else {
+        setError("An unknown error occurred");
+      }
+    }
+  };
+
   return (
     <div className="flex flex-col flex-1">
       <div className="w-full max-w-md pt-10 mx-auto">
@@ -30,6 +79,14 @@ export default function SignInForm() {
               Enter your email and password to sign in!
             </p>
           </div>
+
+          {error && (
+            <div className="mb-4 text-sm text-red-600 dark:text-red-400">{error}</div>
+          )}
+          {success && (
+            <div className="mb-4 text-sm text-green-600 dark:text-green-400">{success}</div>
+          )}
+
           <div>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-5">
               <button className="inline-flex items-center justify-center gap-3 py-3 text-sm font-normal text-gray-700 transition-colors bg-gray-100 rounded-lg px-7 hover:bg-gray-200 hover:text-gray-800 dark:bg-white/5 dark:text-white/90 dark:hover:bg-white/10">
@@ -83,13 +140,18 @@ export default function SignInForm() {
                 </span>
               </div>
             </div>
-            <form>
+            <form onSubmit={handleSubmit}>
               <div className="space-y-6">
                 <div>
                   <Label>
                     Email <span className="text-error-500">*</span>{" "}
                   </Label>
-                  <Input placeholder="info@gmail.com" />
+                  <Input
+                    placeholder="info@gmail.com"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                  />
                 </div>
                 <div>
                   <Label>
@@ -99,6 +161,9 @@ export default function SignInForm() {
                     <Input
                       type={showPassword ? "text" : "password"}
                       placeholder="Enter your password"
+                      name="password"
+                      value={formData.password}
+                      onChange={handleChange}
                     />
                     <span
                       onClick={() => setShowPassword(!showPassword)}
@@ -114,7 +179,10 @@ export default function SignInForm() {
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-3">
-                    <Checkbox checked={isChecked} onChange={setIsChecked} />
+                    <Checkbox
+                      checked={isChecked}
+                      onChange={() => setIsChecked(!isChecked)}
+                    />
                     <span className="block font-normal text-gray-700 text-theme-sm dark:text-gray-400">
                       Keep me logged in
                     </span>
@@ -136,9 +204,9 @@ export default function SignInForm() {
 
             <div className="mt-5">
               <p className="text-sm font-normal text-center text-gray-700 dark:text-gray-400 sm:text-start">
-                Don&apos;t have an account? {""}
+                Don't have an account?{" "}
                 <Link
-                  to="/signup"
+                  to="/"
                   className="text-brand-500 hover:text-brand-600 dark:text-brand-400"
                 >
                   Sign Up
